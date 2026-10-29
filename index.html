@@ -24,8 +24,8 @@
     <!-- ===== 왼쪽 사이드바 ===== -->
     <nav class="sidebar" id="sidebar">
         <ul class="sidebar__menu">
-            <li><a href="./" aria-current="page">이력서</a></li>
-            <li><a href="portfolio/">포트폴리오</a></li>
+            <li><a href="index.html" aria-current="page">이력서</a></li>
+            <li><a href="portfolio/index.html">포트폴리오</a></li>
             <li><button class="sidebar__print" onclick="window.print()">PDF 내려받기</button></li>
         </ul>
     </nav>
@@ -71,29 +71,161 @@
             <p>구조적 문제 해결 능력과 모호한 개념을 명확히 정리하는 소통 역량을 바탕으로, 팀이 언제나 올바른 문제에 집중하도록 돕는 나침반이 되겠습니다.</p>
             <hr>
 
-            <!-- ===== Skills: [Grid] auto-fit 카드 + [Bootstrap] badge ===== -->
+            <!-- ===== Skills: [Grid] auto-fit 카드 + [Bootstrap] badge (포트폴리오 Tech Stack과 동일) ===== -->
             <h2>Skills</h2>
             <div class="skills_grid">
                 <div class="skill_group">
                     <p class="skill_label">LANGUAGE</p>
                     <div class="skill_tags">
                         <span class="badge rounded-pill skill_badge">Python</span>
+                        <span class="badge rounded-pill skill_badge">SQL</span>
                     </div>
                 </div>
                 <div class="skill_group">
-                    <p class="skill_label">WEB</p>
+                    <p class="skill_label">DATA</p>
                     <div class="skill_tags">
-                        <span class="badge rounded-pill skill_badge">HTML</span>
-                        <span class="badge rounded-pill skill_badge">CSS</span>
+                        <span class="badge rounded-pill skill_badge">pandas</span>
+                        <span class="badge rounded-pill skill_badge">NumPy</span>
+                        <span class="badge rounded-pill skill_badge">SciPy</span>
+                        <span class="badge rounded-pill skill_badge">matplotlib</span>
+                        <span class="badge rounded-pill skill_badge">seaborn</span>
+                        <span class="badge rounded-pill skill_badge">Plotly</span>
                     </div>
                 </div>
                 <div class="skill_group">
-                    <p class="skill_label">TOOL</p>
+                    <p class="skill_label">ML</p>
                     <div class="skill_tags">
-                        <span class="badge rounded-pill skill_badge">Git</span>
+                        <span class="badge rounded-pill skill_badge">scikit-learn</span>
+                        <span class="badge rounded-pill skill_badge">LightGBM</span>
+                        <span class="badge rounded-pill skill_badge">XGBoost</span>
+                        <span class="badge rounded-pill skill_badge">CatBoost</span>
+                        <span class="badge rounded-pill skill_badge">Optuna</span>
+                        <span class="badge rounded-pill skill_badge">imbalanced-learn</span>
+                    </div>
+                </div>
+                <div class="skill_group">
+                    <p class="skill_label">DL · CV · NLP</p>
+                    <div class="skill_tags">
+                        <span class="badge rounded-pill skill_badge">PyTorch</span>
+                        <span class="badge rounded-pill skill_badge">TensorFlow / Keras</span>
+                        <span class="badge rounded-pill skill_badge">torchvision</span>
+                        <span class="badge rounded-pill skill_badge">Ultralytics</span>
+                        <span class="badge rounded-pill skill_badge">KoNLPy</span>
+                        <span class="badge rounded-pill skill_badge">Gensim</span>
+                    </div>
+                </div>
+                <div class="skill_group">
+                    <p class="skill_label">MODELS</p>
+                    <div class="skill_tags">
+                        <span class="badge rounded-pill skill_badge">ResNet</span>
+                        <span class="badge rounded-pill skill_badge">DenseNet</span>
+                        <span class="badge rounded-pill skill_badge">EfficientNet</span>
+                        <span class="badge rounded-pill skill_badge">YOLOv8</span>
+                        <span class="badge rounded-pill skill_badge">LSTM</span>
+                        <span class="badge rounded-pill skill_badge">Word2Vec</span>
+                        <span class="badge rounded-pill skill_badge">Grad-CAM</span>
+                    </div>
+                </div>
+                <div class="skill_group">
+                    <p class="skill_label">DATABASE</p>
+                    <div class="skill_tags">
+                        <span class="badge rounded-pill skill_badge">MySQL</span>
+                        <span class="badge rounded-pill skill_badge">SQLAlchemy</span>
+                        <span class="badge rounded-pill skill_badge">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill_group">
+                    <p class="skill_label">BACKEND · INFRA</p>
+                    <div class="skill_tags">
+                        <span class="badge rounded-pill skill_badge">FastAPI</span>
+                        <span class="badge rounded-pill skill_badge">Node.js</span>
+                        <span class="badge rounded-pill skill_badge">Docker</span>
+                    </div>
+                </div>
+                <div class="skill_group">
+                    <p class="skill_label">TOOLS</p>
+                    <div class="skill_tags">
+                        <span class="badge rounded-pill skill_badge">Jupyter</span>
+                        <span class="badge rounded-pill skill_badge">Google Colab</span>
                     </div>
                 </div>
             </div>
+            <hr>
+
+            <!-- ===== Experience: 기술 역량 요약 (상세 내용은 포트폴리오) ===== -->
+            <h2>Experience</h2>
+            <ul class="exp_list">
+                <li><strong>Python</strong>, <strong>pandas</strong>, <strong>SciPy</strong>로 헬스케어 데이터를 탐색하고, <strong>통계 검정</strong>(크래머 V, McNemar, 효과크기)으로 결과의 실질적 의미를 판단</li>
+                <li><strong>LightGBM</strong>, <strong>CatBoost</strong>, <strong>XGBoost</strong>, <strong>Optuna</strong>로 예측 모델을 개발하고, 실행할 때마다 달라지던 결과를 <strong>완전히 재현</strong>되도록 파이프라인 정비</li>
+                <li><strong>PyTorch</strong>로 의료 영상 분류 모델(ResNet · DenseNet · EfficientNet)을 학습하고 <strong>Grad-CAM</strong>으로 모델의 판단 근거 해석</li>
+                <li><strong>FastAPI</strong>, <strong>SQLAlchemy</strong>, <strong>Alembic</strong>, <strong>MySQL</strong>로 REST API와 DB 마이그레이션을 구현하고, <strong>Swagger</strong>로 전체 흐름 검증</li>
+                <li><strong>특성요인도</strong> · <strong>변수정의서</strong> · <strong>분석계획서</strong>로 서비스에 필요한 데이터를 정의하고 팀의 공통 기준 설계</li>
+                <li><strong>HTML/CSS</strong>, <strong>Bootstrap</strong>, <strong>JavaScript</strong>로 이력서 · 포트폴리오 사이트를 만들고 <strong>Git</strong> · <strong>GitHub Pages</strong>로 배포</li>
+            </ul>
+            <hr>
+
+            <!-- ===== Projects: 포트폴리오와 같은 순서 ===== -->
+            <h2>Projects</h2>
+
+            <article class="project">
+                <h3 class="project_title">임신 성공 여부 예측</h3>
+                <p class="project_meta">2026.08 - 2026.09 · 4CAST · 4인 · LightGBM 모델링 · 튜닝, 재현성 문제 해결, 모델 개발 보고서</p>
+                <p class="project_desc">난임 시술 기록(256,351건, 67개 변수)으로 해당 시술 주기의 임신 성공 여부를 예측하는 모델 개발</p>
+                <ul>
+                    <li>LightGBM · CatBoost · XGBoost <strong>가중 앙상블</strong>로 AUC <strong>0.7417</strong> 기록, 5-Fold 교차검증으로 검증 전략 보완</li>
+                    <li>실행할 때마다 달라지던 AUC의 원인 4가지를 찾아 해결해 <strong>3회 반복 학습 표준편차 0</strong>으로 완전히 재현</li>
+                    <li>"이식 배아 수 한 변수가 중요도의 50%" 등 <strong>핵심 발견 5가지</strong>를 보고서로 정리해 최종 발표에 반영</li>
+                </ul>
+                <div class="project_links">
+                    <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
+                    <a href="https://github.com/e0917132/ivf-pregnancy-prediction" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h3 class="project_title">멀티모달 AI를 활용한 동물병원 판독 자동화 및 보호자 맞춤 설명문 제공 서비스</h3>
+                <p class="project_meta">2026.09 - 2026.10 · E-Sight · 5인 · 특성요인도 · 변수정의서 · 분석계획서 설계, 최종 발표 1부</p>
+                <p class="project_desc">X-ray · 혈액검사 · 투약 기록을 묶어 수의사에게는 판독 초안을, 보호자에게는 쉬운 설명문을 제공하는 구독형 서비스 기획</p>
+                <ul>
+                    <li>11개 영역 <strong>528개 인자</strong>를 특성요인도로 정리하고, 1 · 3 · 9점 수집성 평가표로 <strong>104개 우선 인자</strong>에 팀 합의</li>
+                    <li>실데이터에서 바로 쓸 수 있는 변수가 12개뿐인 문제를 <strong>19개 변수 분석 + 가상 데이터 결합 검증</strong>으로 재설계</li>
+                    <li>크래머 V로 관련 강도를 비교해 "질환군별 이상률 <strong>최대 150배</strong>", "병원 간 판정률 <strong>최대 3.8배</strong>" 차이라는 서비스 근거 확보</li>
+                </ul>
+                <div class="project_links">
+                    <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
+                    <a href="https://github.com/e0917132/esight-veterinary-xray-service" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h3 class="project_title">흉부 X-ray 폐렴 분류</h3>
+                <p class="project_meta">2026.10 · 개인 프로젝트 · 리더보드 정확도 0.8782 (Baseline 0.75)</p>
+                <p class="project_desc">소아 흉부 X-ray를 정상과 폐렴으로 분류하고, 검증 점수와 실제 점수의 격차를 분석한 딥러닝 프로젝트</p>
+                <ul>
+                    <li>검증 0.99 vs 리더보드 0.84 격차의 원인을 <strong>train/test 프레이밍 차이</strong>로 찾아 여백 크롭으로 리더보드 <strong>0.8622 → 0.8766</strong></li>
+                    <li>14개 실험을 기록표와 <strong>McNemar 검정</strong>으로 비교해, 어떤 변경이 실제로 유의했는지 숫자로 설명</li>
+                    <li>검증 1등 앙상블이 리더보드 꼴찌인 결과를 보고 <strong>검증 점수만으로 모델을 고르지 않는 기준</strong>을 세워 최종 모델 결정</li>
+                </ul>
+                <div class="project_links">
+                    <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
+                    <a href="https://github.com/e0917132/pneumonia_classification_project" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h3 class="project_title">AI 폐렴 진단 지원 시스템</h3>
+                <p class="project_meta">2026.10 · 5조 · 3인 · DB 모델 · API 구현, 명세서 검토, AI 모델 평가, 통합 검증</p>
+                <p class="project_desc">흉부 X-ray를 업로드하면 AI가 폐렴 여부를 예측해 의료진의 판독을 돕는 FastAPI 웹 서비스</p>
+                <ul>
+                    <li>마이페이지 · 환자 관리 · AI 예측 결과 API를 <strong>계층 분리</strong>(apis / services / repositories / schemas)로 구현하고 프론트와 연동</li>
+                    <li>공통 인증 모듈이 없어 다른 파트 API가 실행되지 않던 문제를 <strong>공통 모듈 분리 · 선머지</strong>로 해결, Swagger 검증 <strong>37/37 통과</strong></li>
+                    <li>정답 없는 test 대신 학습과 같은 검증 분할 1,044장으로 AI 모델을 평가해 <strong>Recall 0.9910</strong>으로 기준 통과, 전체 흐름 <strong>36개 항목 통과</strong></li>
+                </ul>
+                <div class="project_links">
+                    <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
+                    <a href="https://github.com/qkcnzkvh/AH_web_development_5team" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </article>
             <hr>
 
             <!-- ===== Career: [Bootstrap] accordion + [Grid] 기간 | 내용 타임라인 ===== -->
@@ -171,9 +303,41 @@
 
             </div>
 
-            <div class="career_etc">
-                <p class="career_task">[기타 경력]</p>
-                <p>이진호수 휘트니스 · 헬스 트레이너 (2020.11 - 2021.10)</p>
+            <hr>
+
+            <!-- ===== Study & Activity: 참여 내역 + 배운 점 ===== -->
+            <h2>Study &amp; Activity</h2>
+            <div class="activity_list">
+                <div class="activity_row">
+                    <div class="activity_head">
+                        <p class="activity_title">파이썬 전문가 1급 스터디</p>
+                        <p class="activity_period">2026.10 - 진행 중</p>
+                    </div>
+                    <ul>
+                        <li>한국자격검정평가진흥원 파이썬 전문가 1급 취득을 목표로 스터디에 참여</li>
+                        <li>공부한 내용을 블로그에 8편으로 정리하며, 개념을 남에게 설명할 수 있는 수준으로 다듬는 습관을 기름</li>
+                    </ul>
+                </div>
+                <div class="activity_row">
+                    <div class="activity_head">
+                        <p class="activity_title"><a href="https://e0917132.github.io/" target="_blank" rel="noopener noreferrer">기술 블로그 구축 · 운영</a></p>
+                        <p class="activity_period">2026.10 - 진행 중</p>
+                    </div>
+                    <ul>
+                        <li>Jekyll과 GitHub Pages로 개인 블로그를 직접 구축해 학습 기록을 공개</li>
+                        <li>Git으로 글과 사이트를 관리하며 개발 협업 도구와 배포 과정에 익숙해짐</li>
+                    </ul>
+                </div>
+                <div class="activity_row">
+                    <div class="activity_head">
+                        <p class="activity_title">AI 헬스케어 부트캠프 팀 프로젝트</p>
+                        <p class="activity_period">2026.08 - 2026.10</p>
+                    </div>
+                    <ul>
+                        <li>임신 예측 · E-Sight · 웹 개발 팀 프로젝트에서 재현 가능한 기준선 공유, 변수정의서 선확정, API 경로 · 공통 모듈 규칙 제안 등으로 팀이 같은 기준 위에서 작업하도록 조율</li>
+                        <li>점수뿐 아니라 "왜 그런 결과가 나왔는지"를 보고서와 발표로 설명하는 경험을 쌓음</li>
+                    </ul>
+                </div>
             </div>
             <hr>
 

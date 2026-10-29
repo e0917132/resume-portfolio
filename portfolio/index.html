@@ -77,9 +77,10 @@
 
       <div class="seg reveal" role="radiogroup" aria-label="분야">
         <span class="seg__thumb" aria-hidden="true"></span>
-        <button type="button" role="radio" aria-checked="true" data-filter="all">전체<span class="seg__count">3</span></button>
+        <button type="button" role="radio" aria-checked="true" data-filter="all">전체<span class="seg__count">4</span></button>
         <button type="button" role="radio" aria-checked="false" data-filter="plan">분석 · 기획<span class="seg__count">1</span></button>
         <button type="button" role="radio" aria-checked="false" data-filter="model">모델링<span class="seg__count">2</span></button>
+        <button type="button" role="radio" aria-checked="false" data-filter="dev">웹 개발<span class="seg__count">1</span></button>
       </div>
 
       <div class="cards">
@@ -115,6 +116,17 @@
             <p class="card__more">자세히 보기 <span aria-hidden="true">→</span></p>
           </div>
         </article>
+
+        <article class="card reveal" data-cat="dev" data-project="aihealth" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="card__media"><img src="assets/ai-health-web.png" alt="진료기록 상세 화면의 X-ray 이미지와 AI 폐렴 예측 결과" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__meta">2026.10 <span class="dot">·</span> 5조 · 3인 <span class="dot">·</span> 백엔드 · 통합 검증</p>
+            <h3 class="card__title">AI 폐렴 진단 지원 시스템</h3>
+            <p class="card__desc">흉부 X-ray를 올리면 AI가 폐렴 여부를 예측하는 FastAPI 웹 서비스. 마이페이지·환자·AI 결과 API를 구현하고, 명세서 검토와 전체 흐름 검증(36개 항목 통과)을 맡았습니다.</p>
+            <ul class="tags"><li>FastAPI</li><li>SQLAlchemy</li><li>Alembic</li><li>MySQL</li><li>Docker</li></ul>
+            <p class="card__more">자세히 보기 <span aria-hidden="true">→</span></p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -128,6 +140,11 @@
       </div>
 
       <ol class="timeline">
+        <li class="tl reveal">
+          <p class="tl__date">2026.10</p>
+          <h3 class="tl__title">AI 폐렴 진단 지원 시스템 <span class="tl__sub">· 5조 · 3인</span></h3>
+          <p class="tl__desc">FastAPI로 마이페이지·환자 관리·AI 예측 결과 API를 구현하고, 명세서 검토와 AI 모델 평가, 전체 흐름 검증을 맡았습니다.</p>
+        </li>
         <li class="tl reveal">
           <p class="tl__date">2026.10 — 현재 <span class="badge">진행 중</span></p>
           <h3 class="tl__title">파이썬 스터디</h3>

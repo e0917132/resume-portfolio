@@ -350,6 +350,83 @@ const PROJECTS = {
       },
     ],
   },
+  aihealth: {
+    image: 'assets/ai-health-web.png',
+    title: 'AI 폐렴 진단 지원 시스템',
+    tagline: '흉부 X-ray를 업로드하면 AI가 폐렴 여부를 예측해 의료진의 판독을 돕는 FastAPI 웹 서비스',
+    info: [
+      ['기간', '2026.10.21 — 2026.10.29'],
+      ['인원', '3명 · 5조 (김새봄 · 김민정 · 전은지)'],
+      ['역할', 'DB 모델 · 마이그레이션, 마이페이지 · 환자 · AI 결과 API, 명세서 검토, AI 모델 평가, 전체 흐름 검증'],
+    ],
+    stack: [
+      ['백엔드', ['FastAPI', 'SQLAlchemy (async)', 'Alembic', 'Pydantic', 'PyJWT', 'Argon2']],
+      ['데이터 · AI', ['MySQL 8', 'PyTorch', 'torchvision (ResNet18)']],
+      ['환경 · 협업', ['Docker Compose', 'Swagger', 'GitHub PR', 'HTML/CSS/JS']],
+    ],
+    github: 'https://github.com/qkcnzkvh/AH_web_development_5team',
+    goals: [
+      '회원 · 환자 · 진료기록 · X-ray 이미지 · AI 분석 결과를 하나의 흐름으로 관리하는 의료 지원 웹 서비스 구현',
+      '파트를 나눠 개발하면서도 명세서와 실제 동작이 어긋나지 않도록, 통합 검증까지 마치는 것이 목표',
+    ],
+    process: [
+      ['설계', ['ERD 검토', 'DB 모델 · Alembic 마이그레이션']],
+      ['API 구현', ['마이페이지 · 개인정보 API', '환자 등록 · 수정 · 삭제 API']],
+      ['AI 연동', ['AI 모델 평가 스크립트', 'AI 결과 목록 API · 화면 연동']],
+      ['검증', ['명세서 검토 · 수정안', 'Swagger · 전체 흐름 검증']],
+    ],
+    highlights: [
+      '<code>XrayImage</code> · <code>AiAnalysisResult</code> 모델과 <strong>Alembic 초기 마이그레이션</strong>을 작성하고, ERD의 FK 타입 불일치 · 제약 조건 충돌 · Enum 미적용을 찾아 수정 제안',
+      '마이페이지 조회 · 회원 정보 수정 · 비밀번호 변경 · 회원 탈퇴 API를 <strong>apis / services / repositories / schemas 계층</strong>으로 나눠 설계 · 구현',
+      '환자 정보 등록 · 수정 · 삭제 API와 AI 폐렴 예측 결과 목록 API를 구현하고, 프론트에 "분석 중…" 표시 · 중복 클릭 방지 · Heatmap 열 추가',
+      'API 경로 <code>/api/v1</code> 통일, 휴대폰 번호 형식 통일, 공통 함수를 <code>app/core/security.py</code>로 모으는 등 <strong>팀 공통 규칙</strong> 제안',
+      '화면이 호출하는 엔드포인트 20개를 점검하고, 회원가입부터 AI 예측 · 회원 탈퇴까지 <strong>36개 항목 전체 흐름 통과</strong>(모든 응답 0.15초 이내) 확인',
+    ],
+    troubles: [
+      {
+        title: '공통 인증 모듈이 없어 다른 파트 API가 실행되지 않던 문제',
+        goal: 'A · B · C · D 파트가 각자 만든 API가 하나의 서비스로 함께 동작하게 하기',
+        cause: [
+          '<code>security.py</code>에 JWT 설정과 라우터 등록이 없어 User API가 실행되지 않음',
+          '해시 함수와 <code>get_current_user</code>를 파트마다 따로 만들어 쓰고 있었음',
+        ],
+        fix: [
+          '공통 인증 모듈(<code>security</code> · <code>validators</code>)을 분리하고 Timestamp 기본값 버그를 함께 수정',
+          '공통 모듈 PR을 먼저 머지하고 각 파트가 같은 곳에서 import하도록 제안',
+          '완료 코드를 Swagger로 전체 검증해 실패한 D 파트 3건을 찾아 수정',
+        ],
+        result: 'Swagger 검증 <strong>37개 항목 중 34개 → 37/37 통과</strong>',
+      },
+      {
+        title: 'DB 설계의 FK 타입 · 제약 조건 충돌',
+        goal: 'Alembic 초기 마이그레이션이 오류 없이 생성 · 적용되게 하기',
+        cause: [
+          '<code>users.id</code>(integer)와 <code>xray_images.uploader_id</code>(bigint)의 타입 불일치 — MySQL은 FK 타입이 같아야 함',
+          '<code>uploader_id</code>가 NOT NULL인데 ON DELETE SET NULL로 지정돼 서로 충돌',
+          '<code>patients.gender</code>가 Enum이 아님',
+        ],
+        fix: [
+          '<code>users.id</code>를 BigInteger로 통일',
+          '<code>uploader_id</code>를 NULL 허용으로 변경',
+          '<code>patients.gender</code>를 Enum(Gender)으로 수정',
+        ],
+        result: '모델을 <code>app/models/__init__.py</code>에 연결하고 초기 마이그레이션 생성 · 검증 완료',
+      },
+      {
+        title: 'AI 모델을 평가할 정답 데이터가 없던 문제',
+        goal: '배포 전에 AI 모델이 요구사항 기준(NFR-PRED-001)을 넘는지 확인하기',
+        cause: [
+          '대회 test 데이터는 정답 라벨이 없어(전부 0) 평가에 쓸 수 없음',
+          '비기능 요구사항이라 API로 만들 대상이 아님',
+        ],
+        fix: [
+          '배포 전 평가 스크립트(<code>worker/evaluate.py</code>)를 만들고, 서비스와 같은 <code>predict_pneumonia</code>로 평가해 전처리 · 판정 방식을 일치',
+          '학습 노트북과 같은 검증 분할(stratify 8:2, <code>random_state=42</code>)로 <strong>1,044장</strong>을 재구성해 평가',
+        ],
+        result: 'Recall <strong>0.9910</strong> · Accuracy <strong>0.9904</strong>로 기준 통과, 평가 결과를 문서로 기록',
+      },
+    ],
+  },
 };
 
 const projectModal = document.getElementById('projectModal');

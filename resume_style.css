@@ -267,31 +267,34 @@ main > hr:last-child {
     display: none;                /* 마지막 섹션 뒤 빈 구분선 숨김 */
 }
 
-/* ===== Skills: [Grid] auto-fit 카드 ===== */
+/* ===== Skills: [Grid] 한 줄에 한 항목씩 세로로 (분야 | 기술) ===== */
 .skills_grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   /* 200px 이상 확보되는 만큼 칸 생성 */
-    gap: 16px;
+    grid-template-columns: 1fr;   /* 항목을 세로로 쌓기 */
+    border-top: 1px solid var(--line);
 }
 
 .skill_group {
-    padding: 18px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    transition: border-color .2s, transform .2s;
+    display: grid;
+    grid-template-columns: 150px 1fr;   /* 왼쪽 분야 고정 | 오른쪽 기술 배지 */
+    gap: 16px;
+    align-items: start;
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--line);
+    transition: background .15s;
 }
 .skill_group:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+    background-color: var(--chip);
 }
 
 .skill_label {
+    padding-top: 4px;
     font-family: var(--mono);
     font-size: 0.75rem;
     font-weight: 500;
-    color: var(--text-3) !important;
+    color: var(--text-2) !important;
     letter-spacing: 0.06em;
-    margin: 0 0 10px !important;  /* main p 규칙보다 우선 */
+    margin: 0 !important;         /* main p 규칙보다 우선 */
 }
 
 .skill_tags {
@@ -308,6 +311,139 @@ main > hr:last-child {
     font-family: var(--mono);
     font-size: 0.8rem;
     font-weight: 400;
+}
+
+/* ===== Experience: 기술 역량 요약 ===== */
+.exp_list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-2);
+}
+
+.exp_list li {
+    margin-bottom: 8px;
+    line-height: 1.8;
+}
+
+.exp_list li::marker,
+.project li::marker,
+.activity_row li::marker {
+    color: var(--accent);
+}
+
+.exp_list strong,
+.project strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ===== Projects: 카드 ===== */
+.project {
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.project + .project {
+    margin-top: 16px;
+}
+
+.project_title {
+    margin: 0 0 6px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.project_meta {
+    font-family: var(--mono);
+    font-size: 0.78rem !important;
+    color: var(--text-3) !important;
+    margin-bottom: 12px !important;
+}
+
+.project_desc {
+    color: var(--text) !important;
+    font-weight: 500;
+}
+
+.project ul {
+    margin: 0 0 14px;
+    padding-left: 20px;
+    color: var(--text-2);
+}
+
+.project li {
+    line-height: 1.8;
+}
+
+.project_links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project_links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background-color: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.project_links a:hover {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+/* ===== Study & Activity: [Grid] 활동명·기간 | 배운 점 ===== */
+.activity_row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.activity_row:first-child {
+    border-top: 1px solid var(--line);
+}
+
+.activity_title {
+    margin: 0 0 4px !important;
+    color: var(--text) !important;
+    font-weight: 600;
+}
+
+.activity_title a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+}
+
+.activity_period {
+    font-family: var(--mono);
+    font-size: 0.78rem !important;
+    color: var(--text-3) !important;
+    margin: 0 !important;
+}
+
+.activity_row ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-2);
+}
+
+.activity_row li {
+    line-height: 1.8;
 }
 
 /* ===== Career: [Bootstrap] accordion + [Grid] 타임라인 ===== */
@@ -536,6 +672,22 @@ main > hr:last-child {
     .edu_status { grid-area: status; }
     .edu_major  { grid-area: major; font-size: 0.9rem; }
     .edu_period { grid-area: period; }
+
+    /* Skills: 분야를 기술 배지 위로 */
+    .skill_group {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    /* Study & Activity: 2열 → 1열 */
+    .activity_row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .project {
+        padding: 18px;
+    }
 }
 
 /* ===== 반응형: 모바일 ===== */
@@ -572,6 +724,12 @@ main > hr:last-child {
         padding: 0;
         border: 0;
         box-shadow: none;
+    }
+    /* 카드가 페이지 경계에서 잘리지 않게 */
+    .project,
+    .activity_row,
+    .skill_group {
+        break-inside: avoid;
     }
     /* 접힌 경력도 모두 펼쳐서 인쇄 */
     .accordion-collapse.collapse {
