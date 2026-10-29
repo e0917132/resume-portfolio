@@ -1,0 +1,583 @@
+/* ===== 디자인 토큰: 포트폴리오와 같은 색·글꼴 ===== */
+:root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #111214;
+    --text-2: #4b5058;
+    --text-3: #8a8f98;
+    --line: #e7e7e4;
+    --chip: #f0f0ee;
+    --accent: #1d5fd6;
+    --accent-soft: #e8f0fd;
+    --shadow: 0 1px 2px rgba(17, 18, 20, .04), 0 8px 24px rgba(17, 18, 20, .06);
+    --font: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+    /* Bootstrap 기본 색을 같은 톤으로 덮어쓰기 */
+    --bs-body-font-family: var(--font);
+    --bs-body-color: var(--text);
+    --bs-primary: var(--accent);
+    --bs-primary-rgb: 29, 95, 214;
+    --bs-border-color: var(--line);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-left: 180px;          /* 사이드바 너비만큼 비워두기 */
+    background-color: var(--bg);
+    font-family: var(--font);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.65;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+    counter-reset: section;       /* h2 앞 01, 02 … 번호용 */
+}
+
+/* ===== 왼쪽 사이드바: fixed ===== */
+.sidebar {
+    position: fixed;              /* 스크롤해도 왼쪽에 고정 */
+    top: 0;
+    left: 0;
+    width: 180px;
+    height: 100vh;                /* 화면 높이 전체 */
+    z-index: 10;
+    background-color: var(--surface);
+    border-right: 1px solid var(--line);
+}
+
+.sidebar__menu {
+    display: flex;
+    flex-direction: column;       /* 메뉴를 세로로 */
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 1.5rem 14px;
+}
+
+.sidebar__menu a,
+.sidebar__print {
+    display: block;
+    width: 100%;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    color: var(--text-2);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+
+.sidebar__menu a:hover,
+.sidebar__print:hover {
+    background-color: var(--chip);
+    color: var(--text);
+}
+
+/* 지금 보고 있는 페이지(이력서) 강조 */
+.sidebar__menu a[aria-current="page"] {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* PDF 버튼은 맨 아래 구분선 뒤에 */
+.sidebar__menu li:last-child {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+
+/* 햄버거 버튼: 데스크톱에서는 숨김 */
+.hamburger {
+    display: none;
+}
+
+/* ===== 이력서 카드 ===== */
+.all {
+    max-width: 960px;
+    margin: 2.5rem auto;          /* 가운데 정렬 */
+    padding: 4rem;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+/* ===== Header: 배치는 Bootstrap row/col이 담당 ===== */
+.profile_info h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.profile_info p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+#position {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background-color: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.25rem;
+    color: var(--text-2);
+    font-size: 0.875rem;
+}
+
+#contact-row i {
+    margin-right: 6px;
+    color: var(--text-3);
+}
+
+#github {
+    color: inherit;               /* 부모 컬러에 따름 */
+    text-decoration: none;
+}
+#github:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.header_actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.25rem;
+}
+
+/* [Bootstrap] btn-primary → 포트폴리오의 둥근 파란 버튼 */
+.btn-primary {
+    --bs-btn-bg: var(--accent);
+    --bs-btn-border-color: var(--accent);
+    --bs-btn-hover-bg: #174fb3;
+    --bs-btn-hover-border-color: #174fb3;
+    --bs-btn-active-bg: #174fb3;
+    --bs-btn-active-border-color: #174fb3;
+    border-radius: 999px;
+    font-weight: 500;
+}
+.header_actions .btn {
+    padding: 8px 18px;
+    font-size: 0.875rem;
+}
+.btn-secondary {
+    --bs-btn-bg: var(--surface);
+    --bs-btn-color: var(--text);
+    --bs-btn-border-color: var(--text-3);
+    --bs-btn-hover-bg: var(--chip);
+    --bs-btn-hover-color: var(--text);
+    --bs-btn-hover-border-color: var(--text-3);
+    border-radius: 999px;
+}
+
+/* ===== 사진: relative + absolute 배지 ===== */
+.profile_photo {
+    position: relative;           /* 배지의 기준점 */
+    display: inline-block;        /* 사진 크기만큼만 차지 → 배지가 사진 모서리에 붙음 */
+}
+
+.profile_photo img {
+    display: block;
+    width: 200px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+}
+
+.photo_badge {
+    position: absolute;           /* 사진 왼쪽 아래 모서리에 붙임 */
+    bottom: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+}
+
+/* ===== 본문 ===== */
+main p {
+    text-align: left;
+    line-height: 1.8;
+    margin: 0 0 10px;
+    color: var(--text-2);
+    word-break: keep-all;
+}
+
+/* 섹션 제목: 포트폴리오처럼 "01 /" 번호 + 제목 */
+h2 {
+    counter-increment: section;
+    margin: 0 0 2rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+h2::before {
+    content: counter(section, decimal-leading-zero) " /";
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+}
+
+h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 3.5rem 0;
+    opacity: 1;                   /* Bootstrap의 hr 반투명 해제 */
+}
+
+main > hr:last-child {
+    display: none;                /* 마지막 섹션 뒤 빈 구분선 숨김 */
+}
+
+/* ===== Skills: [Grid] auto-fit 카드 ===== */
+.skills_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   /* 200px 이상 확보되는 만큼 칸 생성 */
+    gap: 16px;
+}
+
+.skill_group {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    transition: border-color .2s, transform .2s;
+}
+.skill_group:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.skill_label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-3) !important;
+    letter-spacing: 0.06em;
+    margin: 0 0 10px !important;  /* main p 규칙보다 우선 */
+}
+
+.skill_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* [Bootstrap] badge 색만 포트폴리오 태그 톤에 맞춤 */
+.skill_badge {
+    padding: 6px 12px;
+    background-color: var(--chip);
+    color: var(--text-2);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+/* ===== Career: [Bootstrap] accordion + [Grid] 타임라인 ===== */
+.career_list {
+    --bs-accordion-border-color: var(--line);
+    --bs-accordion-border-radius: 14px;
+    --bs-accordion-inner-border-radius: 13px;
+    --bs-accordion-btn-padding-y: 1.1rem;
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 0.2rem rgba(29, 95, 214, 0.2);
+    --bs-accordion-active-bg: var(--accent-soft);
+    --bs-accordion-active-color: var(--text);
+    margin-bottom: 24px;
+}
+
+/* 펼쳐진 항목 색을 포트폴리오 톤으로 */
+.accordion-button:not(.collapsed) {
+    box-shadow: none;
+}
+
+.career_title {
+    display: grid;
+    grid-template-columns: 150px 1fr;   /* 왼쪽 기간 고정 | 오른쪽 회사·직무 */
+    gap: 1rem;
+    align-items: baseline;
+    width: 100%;
+    font-size: 0.95rem;
+    color: var(--text-2);
+}
+
+.career_company {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.career_period {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text-3);
+    white-space: nowrap;
+}
+
+.accordion-button:not(.collapsed) .career_period {
+    color: var(--accent);
+}
+
+.career_task {
+    margin: 0 0 8px !important;
+    padding-left: 10px;
+    border-left: 2px solid var(--accent);
+    font-weight: 600;
+    color: var(--text) !important;
+}
+
+.accordion-body ul {
+    margin: 0;
+    padding-left: 24px;
+    color: var(--text-2);
+}
+
+.accordion-body li {
+    line-height: 1.8;
+}
+
+.accordion-body li::marker {
+    color: var(--accent);
+}
+
+.career_etc p:last-child {
+    margin: 0 0 0 12px;
+    font-size: 0.875rem;
+}
+
+/* ===== Education: table → [Grid] ===== */
+.edu_list {
+    border-top: 1px solid var(--line);
+}
+
+.edu_row {
+    display: grid;
+    grid-template-columns: 170px 1.4fr 1fr 80px;   /* 기간 | 학교 | 전공 | 상태 */
+    gap: 12px;
+    align-items: center;
+    padding: 14px 10px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+    transition: background .15s;
+}
+
+.edu_row:hover {
+    background-color: var(--chip);
+}
+
+.edu_period {
+    font-family: var(--mono);
+    color: var(--text-3);
+    font-size: 0.78rem;
+}
+
+.edu_school {
+    font-weight: 600;
+}
+
+.edu_major {
+    color: var(--text-2);
+}
+
+.edu_status {
+    text-align: right;
+}
+
+/* [Bootstrap] 상태 배지 */
+.edu_status .badge {
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+.edu_status .text-bg-primary {
+    background-color: var(--accent-soft) !important;
+    color: var(--accent) !important;
+}
+.edu_status .text-bg-light {
+    background-color: var(--chip) !important;
+    border-color: transparent !important;
+    color: var(--text-2) !important;
+}
+
+/* ===== 연락하기 모달 ===== */
+.modal-content {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+.modal-header,
+.modal-footer {
+    border-color: var(--line);
+}
+.modal-title {
+    font-weight: 600;
+}
+
+.contact_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 2.2;
+}
+
+.contact_list i {
+    width: 24px;
+    color: var(--accent);
+}
+
+/* ===== 반응형: 태블릿 이하 ===== */
+@media (max-width: 768px) {
+    /* 사이드바 → 햄버거 메뉴 */
+    body {
+        padding-left: 0;
+    }
+
+    .hamburger {
+        display: flex;            /* 모바일에서만 보이게 */
+        justify-content: center;
+        align-items: center;
+        position: fixed;          /* 스크롤해도 왼쪽 위에 고정 */
+        top: 12px;
+        left: 12px;
+        z-index: 20;              /* 사이드바보다 위 */
+        width: 44px;
+        height: 44px;
+        border: 1.5px solid var(--accent);
+        border-radius: 999px;
+        background-color: var(--accent-soft);
+        color: var(--accent);
+        font-size: 1.1rem;
+        cursor: pointer;
+    }
+
+    .sidebar {
+        width: 220px;
+        transform: translateX(-100%);   /* 평소엔 화면 왼쪽 밖에 숨김 */
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);       /* open 클래스가 붙으면 슬라이드로 등장 */
+        box-shadow: var(--shadow);
+    }
+
+    .sidebar__menu {
+        padding-top: 4.5rem;      /* 햄버거 버튼 아래부터 메뉴 시작 */
+    }
+
+    .sidebar__menu a,
+    .sidebar__print {
+        padding: 14px 16px;       /* 손가락으로 누르기 쉽게 */
+        font-size: 1rem;
+    }
+
+    .all {
+        margin: 0;
+        padding: 4.5rem 1.5rem 2.5rem;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    #contact-row,
+    .header_actions {
+        justify-content: center;
+    }
+
+    .profile_photo img {
+        width: 150px;
+    }
+
+    /* Education: 4열 → 2열 + grid-template-areas */
+    .edu_row {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "school status"
+            "major  major"
+            "period period";
+        gap: 2px 12px;
+    }
+    .edu_school { grid-area: school; }
+    .edu_status { grid-area: status; }
+    .edu_major  { grid-area: major; font-size: 0.9rem; }
+    .edu_period { grid-area: period; }
+}
+
+/* ===== 반응형: 모바일 ===== */
+@media (max-width: 480px) {
+    .all {
+        padding: 4.5rem 1rem 2rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    /* Career 타임라인: 기간을 회사명 위로 */
+    .career_title {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
+
+/* ===== 인쇄 ===== */
+@media print {
+    body {
+        padding-left: 0;
+        background: none;
+    }
+    .sidebar,
+    .hamburger,
+    .header_actions,
+    .photo_badge {
+        display: none !important;   /* 인쇄(PDF)에는 버튼·메뉴 제외 */
+    }
+    .all {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+    }
+    /* 접힌 경력도 모두 펼쳐서 인쇄 */
+    .accordion-collapse.collapse {
+        display: block !important;
+    }
+    .accordion-button::after {
+        display: none;              /* 펼침 화살표 숨김 */
+    }
+}
