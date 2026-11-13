@@ -157,6 +157,7 @@
             <ul class="exp_list">
                 <li><strong>Python</strong>, <strong>pandas</strong>, <strong>SciPy</strong>로 헬스케어 데이터를 탐색하고, <strong>통계 검정</strong>(크래머 V, McNemar, 효과크기)으로 결과의 실질적 의미를 판단</li>
                 <li><strong>LightGBM</strong>, <strong>CatBoost</strong>, <strong>XGBoost</strong>, <strong>Optuna</strong>로 예측 모델을 개발하고, 실행할 때마다 달라지던 결과를 <strong>완전히 재현</strong>되도록 파이프라인 정비</li>
+                <li><strong>scikit-learn Pipeline</strong>과 <strong>StratifiedGroupKFold</strong>로 데이터 누수 없는 교차검증 체계를 만들고, 검증 착시를 찾아 팀 실험 결론을 바로잡음</li>
                 <li><strong>PyTorch</strong>로 의료 영상 분류 모델(ResNet · DenseNet · EfficientNet)을 학습하고 <strong>Grad-CAM</strong>으로 모델의 판단 근거 해석</li>
                 <li><strong>FastAPI</strong>, <strong>SQLAlchemy</strong>, <strong>Alembic</strong>, <strong>MySQL</strong>로 REST API와 DB 마이그레이션을 구현하고, <strong>Swagger</strong>로 전체 흐름 검증</li>
                 <li><strong>특성요인도</strong> · <strong>변수정의서</strong> · <strong>분석계획서</strong>로 서비스에 필요한 데이터를 정의하고 팀의 공통 기준 설계</li>
@@ -224,6 +225,21 @@
                 <div class="project_links">
                     <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
                     <a href="https://github.com/qkcnzkvh/AH_web_development_5team" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <h3 class="project_title">유전자 변이로 암 아형을 분류하는 AI 모델</h3>
+                <p class="project_meta">2026.11 · 데이콘 초격차 AI 헬스케어 해커톤 · meow · 4인 · 공통 검증 모듈, CV–리더보드 원인 분석, 피처 구현, 최종 제출 노트북</p>
+                <p class="project_desc">환자 6,201명의 유전자 4,384개 변이 정보로 26개 암 아형을 분류하는 모델 개발 (리더보드 Macro F1 <strong>0.3792</strong>)</p>
+                <ul>
+                    <li>CV 0.42 vs 리더보드 0.32 격차를 분석해 <strong>입력은 같고 정답이 다른 445쌍</strong>과 예측 쏠림을 찾고, 이론상 최대 점수(0.94)를 근거로 팀 실험 방향 설정</li>
+                    <li>팀장이 제안한 치환 종류 비율 피처를 <strong>fold 안에서만 상위 목록을 고르는 Pipeline</strong>으로 구현해 리더보드 <strong>0.3247 → 0.3650</strong>, 대회 중 최대 상승</li>
+                    <li>특정 암종 점수 하락이 <strong>같은 환자가 다른 fold로 갈라진 검증 착시</strong>임을 묶음 교차검증으로 밝혀(−0.107 → −0.017) 팀 결론 수정</li>
+                </ul>
+                <div class="project_links">
+                    <a href="portfolio/index.html"><i class="fa-solid fa-arrow-up-right-from-square"></i> 포트폴리오</a>
+                    <a href="https://github.com/seol-ditto/dacon-cancer-subclass" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
                 </div>
             </article>
             <hr>
@@ -308,6 +324,16 @@
             <!-- ===== Study & Activity: 참여 내역 + 배운 점 ===== -->
             <h2>Study &amp; Activity</h2>
             <div class="activity_list">
+                <div class="activity_row">
+                    <div class="activity_head">
+                        <p class="activity_title">데이콘 초격차 AI 헬스케어 해커톤</p>
+                        <p class="activity_period">2026.11</p>
+                    </div>
+                    <ul>
+                        <li>4인 팀으로 8일간 유전자 변이 기반 암 아형 분류 대회에 참가, 팀 PR 45개 중 22개를 작성하며 GitHub PR 리뷰로 협업</li>
+                        <li>"test 정보를 쓰지 않는다", "5개 fold 중 4개 이상 올라야 채택" 같은 기준을 끝까지 지키며, 점수보다 실제 환경에서도 쓸 수 있는 방법을 우선하는 경험을 쌓음</li>
+                    </ul>
+                </div>
                 <div class="activity_row">
                     <div class="activity_head">
                         <p class="activity_title">파이썬 전문가 1급 스터디</p>

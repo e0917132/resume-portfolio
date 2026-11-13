@@ -77,9 +77,9 @@
 
       <div class="seg reveal" role="radiogroup" aria-label="분야">
         <span class="seg__thumb" aria-hidden="true"></span>
-        <button type="button" role="radio" aria-checked="true" data-filter="all">전체<span class="seg__count">4</span></button>
+        <button type="button" role="radio" aria-checked="true" data-filter="all">전체<span class="seg__count">5</span></button>
         <button type="button" role="radio" aria-checked="false" data-filter="plan">분석 · 기획<span class="seg__count">1</span></button>
-        <button type="button" role="radio" aria-checked="false" data-filter="model">모델링<span class="seg__count">2</span></button>
+        <button type="button" role="radio" aria-checked="false" data-filter="model">모델링<span class="seg__count">3</span></button>
         <button type="button" role="radio" aria-checked="false" data-filter="dev">웹 개발<span class="seg__count">1</span></button>
       </div>
 
@@ -127,6 +127,17 @@
             <p class="card__more">자세히 보기 <span aria-hidden="true">→</span></p>
           </div>
         </article>
+
+        <article class="card reveal" data-cat="model" data-project="cancer" tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="card__media"><img src="assets/cancer.png" alt="리더보드 점수 흐름과 묶음 교차검증 결과 그래프" loading="lazy"></div>
+          <div class="card__body">
+            <p class="card__meta">2026.11 <span class="dot">·</span> 데이콘 해커톤 · 4인 <span class="dot">·</span> 검증 설계 · 피처 실험</p>
+            <h3 class="card__title">유전자 변이로 암 아형을 분류하는 AI 모델</h3>
+            <p class="card__desc">환자 6,201명의 유전자 4,384개 변이로 26개 암 아형을 분류(리더보드 Macro F1 0.3792). CV와 리더보드가 어긋나는 원인을 분석하고, 검증 착시를 찾아 팀 결론을 바로잡았습니다.</p>
+            <ul class="tags"><li>XGBoost</li><li>scikit-learn</li><li>Pipeline</li><li>교차검증</li></ul>
+            <p class="card__more">자세히 보기 <span aria-hidden="true">→</span></p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -140,6 +151,11 @@
       </div>
 
       <ol class="timeline">
+        <li class="tl reveal">
+          <p class="tl__date">2026.11</p>
+          <h3 class="tl__title">데이콘 초격차 AI 헬스케어 해커톤 <span class="tl__sub">· meow · 4인</span></h3>
+          <p class="tl__desc">팀 공통 검증 틀을 만들고, CV–리더보드 차이 원인 분석, 치환 종류 비율 피처 구현, 최종 제출 노트북 정리를 맡았습니다.</p>
+        </li>
         <li class="tl reveal">
           <p class="tl__date">2026.10</p>
           <h3 class="tl__title">AI 폐렴 진단 지원 시스템 <span class="tl__sub">· 5조 · 3인</span></h3>
